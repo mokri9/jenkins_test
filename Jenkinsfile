@@ -6,14 +6,13 @@ pipeline {
         jdk "JDK1.8"
     }
     stages {
-        
         stage('enable webhook') {
             steps {
                 script {
-                     properties([pieplineTriggers([githubPush()])])
+                    properties([pipelineTriggers([githubPush()])])
                 }
             }
-        
+        }
         stage('pullscm') {
             steps {
                 git credentialsId: 'github', url: 'git@github.com:sathishbob/jenkins_test.git'
